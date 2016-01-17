@@ -1,6 +1,5 @@
-<div class="container">
-<h1>hello angular</h1>
-<uib-tabset>
+<header-directive></header-directive>
+<uib-tabset class="wrap">
     <uib-tab id="{{ tab.tabId }}" heading = "{{ tab.tabTitle }}" ng-repeat= "tab in tabs">
        <div class = "row" ng-repeat = "row in tab.rows">
            <div class = "col-sm-{{ col.colWidth }}" ng-repeat = "col in row.columns">
@@ -11,4 +10,3 @@
        </div>
     </uib-tab>
 </uib-tabset>
-</div>

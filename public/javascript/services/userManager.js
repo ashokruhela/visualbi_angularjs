@@ -1,6 +1,7 @@
 angular.module('vbiApp')
     .service('userManager', ['$http', function($http) {
         return {
+			  user: {},
 			  
 			  login: function(user, done) {
 				  $http.post('/login', {username:user.email, password:user.password})
@@ -9,7 +10,6 @@ angular.module('vbiApp')
 					  
 				  }).error(function (data, status, header, config) {
 					  error = "Invalid User name or passpord!"
-					  console.log(data);
 					  done(error, data);
 					  
 				  });

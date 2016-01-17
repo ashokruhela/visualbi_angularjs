@@ -7,7 +7,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
     User.findById(email, function(err, user) {
        if(!user)
           return done(null, false, {message: "The user doesn't exists"});
-       else if(user.pwd !== password) {
+       else if(user.password !== password) {
           return done(null, false, {message: "wrong password"});
        } else {
           return done(null, user);
@@ -20,7 +20,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(user, done) {
-   User.findById(user.emailId, function(err, user) {
+   User.findById(user.email, function(err, user) {
       done(null, user);
    });
 });

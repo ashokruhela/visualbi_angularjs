@@ -1,10 +1,9 @@
-//angular.module('vbiApp')
-//    .directive('header', function(){
-//    return {
-//        templateUrl: 'views/directives/header.html',
-//        controller: 'headerController'
-//    };
-//});
+angular.module('vbiApp')
+    .directive('headerDirective', function(){
+    return {
+		 templateUrl: 'views/directives/header.html'
+    };
+});
 
 angular.module('vbiApp')
     .directive('widgetPanel', function(){

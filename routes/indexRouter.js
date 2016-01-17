@@ -11,7 +11,7 @@ var express = require('express'),
 
 // Login page
 router.get('/', function(req, res, next) {
-   res.render('login');
+   res.render('index');
 });
 
 router.post('/login', passport.authenticate('local'),function(req, res){
@@ -25,11 +25,6 @@ router.post('/login', passport.authenticate('local'),function(req, res){
 	 
 });
 
-router.post('/oldlogin', passport.authenticate('local', {
-   successRedirect: '/',
-   failureRedirect:'/login',
-   failureFlash: 'Invalid username or password.'
-}));
 
 function isAuthenticated(req,res,next){
 	 if(req.isAuthenticated()) return next();

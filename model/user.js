@@ -2,8 +2,8 @@
 
 var UserSchema = mongoose.Schema({
    name: String,
-   emailId: String,
-   pwd: String,
+   email: String,
+   password: String,
    preferences:[{
       _id: false,
       theme:String,
@@ -22,9 +22,9 @@ var UserSchema = mongoose.Schema({
    }]
 }, {strict: false});
 
-UserSchema.statics.getUser = function (emailId, callback) {
+UserSchema.statics.getUser = function (email, callback) {
    this.model('User').findOne({
-      'emailId': emailId
+      'email': email
    }, {
       '_id': 0
    },function(err, data) {
@@ -33,9 +33,9 @@ UserSchema.statics.getUser = function (emailId, callback) {
 }
 
 
-UserSchema.statics.getDashboard = function (emailId, callback) {
+UserSchema.statics.getDashboard = function (email, callback) {
    this.model('User').find({
-      'emailId': emailId
+      'email': email
    }, {
       'dashboards': 1,
       '_id': 0
@@ -48,10 +48,10 @@ UserSchema.statics.getDashboard = function (emailId, callback) {
    });
 }
 
-UserSchema.statics.getTabs = function (emailId, callback) {
+UserSchema.statics.getTabs = function (email, callback) {
 
    this.model('User').find({
-      'emailId': emailId
+      'email': email
    }, {
       'preferences.theme': 1,
       'dashboards.tabs.tabTitle': 1,
@@ -67,10 +67,10 @@ UserSchema.statics.getTabs = function (emailId, callback) {
 }
 
 UserSchema.statics.findById = function(id, callback) {
-   this.model('User').findOne({"emailId" : id }, {
+   this.model('User').findOne({"email" : id }, {
       "_id": 0,
-      "pwd": 1,
-      "emailId": 1,
+      "password": 1,
+      "email": 1,
       "name": 1}, function(err, data) {
       callback(err, data);
    })
@@ -78,7 +78,7 @@ UserSchema.statics.findById = function(id, callback) {
 
 UserSchema.statics.setUserTheme=function(id, userTheme){
    this.model('User').update({
-     'emailId' : id
+     'email' : id
    },{
      $set: {
        preferences:{
