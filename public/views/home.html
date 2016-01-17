@@ -1,0 +1,14 @@
+<div class="container">
+<h1>hello angular</h1>
+<uib-tabset>
+    <uib-tab id="{{ tab.tabId }}" heading = "{{ tab.tabTitle }}" ng-repeat= "tab in tabs">
+       <div class = "row" ng-repeat = "row in tab.rows">
+           <div class = "col-sm-{{ col.colWidth }}" ng-repeat = "col in row.columns">
+             <widget-panel widget-id="{{ col.widgetId}}" widget-object = "getWidget(col.widgetId)" get-widget-function="getWidget(col.widgetId)">
+                 
+             </widget-panel>
+           </div>
+       </div>
+    </uib-tab>
+</uib-tabset>
+</div>

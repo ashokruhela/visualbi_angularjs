@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href='/bootstrap/css/bootstrap.css' charset="utf-8">
+      <link rel="stylesheet" href="/stylesheets/styles.css" charset="utf-8">
+      <link rel="stylesheet" href="/stylesheets/bootstrap-glyphicons.css" charset="utf-8">
+      <title>Visual BI</title>
+   </head>
+   <body ng-app="vbiApp">
+      <div class="container">
+          <header ng-controller="headerController">
+              <div header></div>
+          </header>
+       <div ng-view>
+            
+       </div>
+        
+      </div>
+      
+      
+      <script src="/javascript/angular.min.js" charset="utf-8"></script>
+      <script src="/javascript/angular-route.min.js" charset="utf-8"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+      <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.0.3.js"></script>
+      <script src="/javascript/application.js"></script>
+      <script src="/javascript/appRoutes.js"></script>
+      <script src="/javascript/controllers/homeController.js"></script>
+      <script src="/javascript/controllers/headerController.js"></script>
+      <script src="/javascript/services/userManager.js"></script>
+      <script src="/javascript/services/widgetManager.js"></script>
+      <script src="/javascript/directives.js"></script>
+   </body>
+</html>
