@@ -9,6 +9,7 @@ var express = require('express'),
     indexRouter = require('./routes/indexRouter'),
     userRouter = require('./routes/userRouter'),
     widgetRouter = require('./routes/widgetRouter'),
+	 dashboardRouter = require('./routes/dashboardRouter'),
     chartCommentRoute = require('./routes/chartComments'),
     dbConfig = require('./config/db');
 
@@ -47,6 +48,7 @@ app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/dashboard', dashboardRouter);
 app.use('/widgets', widgetRouter);
 
 // catch 404 and forward to error handler

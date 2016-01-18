@@ -8,10 +8,8 @@ angular.module('vbiApp')
                                     
     $scope.errorMessage = "";
     $scope.login = function() {
-		  debugger;
 		  userManager.login($scope.user, function(err, data) {
 				if(!err) {
-					 debugger;
 					 //logged in successfully. load the dashboard
 					 $scope.loggedInUser = data;
 					 $scope.$watch($scope.loggedInUser, function(){
@@ -20,7 +18,6 @@ angular.module('vbiApp')
 					 
 					 var url = $location.url();
 					 $location.url(url + 'home');
-//					 $window.location.href = url;
 				} else {
 					 $scope.errorMessage = err;
 				}

@@ -20,25 +20,21 @@
         </li>
       </ul>
 
-       <!-- Account Settings goes here-->
+       
+       
        <ul class="nav navbar-nav pull-right">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>{{ user.name }}<strong class="caret"></Strong></a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a>
-							</li>
-							<li>
-								<a href="#"><span class="glyphicon glyphicon-refresh"></span> Update Profile</a>
-							</li>
-							<li>
-               <a href="#"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
-            </li>
-							<li>
-								<a href="/logout" id="btnLogout"><span class="glyphicon glyphicon-off"></span> Sign out</a>
-							</li>
-           </ul>
-         </li>
+       	<!-- Account Settings goes here-->
+			 <div class="btn-group" uib-dropdown>
+				<button type="button" id="account-button" class="btn" uib-dropdown-toggle>
+					<span class="glyphicon glyphicon-user"></span>{{ user.name }}<strong class="caret"></Strong>
+				</button>
+				<ul uib-dropdown-menu role="menu" aria-labelledby="account-button">
+					<li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-refresh"></span> Update Profile</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-question-sign"></span>Help</a></li>
+					<li><a href="/logout" id="btnLogout"><span class="glyphicon glyphicon-off"></span> Sign out</a></li>
+				</ul>
+			 </div>
        </ul>
        <!--Search field goes here -->
        <form class="navbar-form pull-right">

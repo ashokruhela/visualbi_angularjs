@@ -25,14 +25,14 @@ angular.module('vbiApp')
 				 	});
            },
             
-           getDashboards: function(email) {
-                $http({
-                    method: 'GET',
-                    url: '/dashboard'
-                }).then(function(res) {
-                    
-                });
-            }
+           getDashboard: function(email, done) {
+				  $http({
+					  method: 'GET',
+					  url: '/dashboard/' + email
+				 	}).then(function(res) {
+					  done(res.data);
+				 	});
+           }
         };
         
     }]);

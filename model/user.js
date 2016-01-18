@@ -16,7 +16,7 @@ var UserSchema = mongoose.Schema({
          rows: [{
             rowId: String,
             colWidth: String,
-            widgetId: String
+            widgetId: {type: String, ref: 'Widget'}
          }]
       }]
    }]
@@ -34,18 +34,16 @@ UserSchema.statics.getUser = function (email, callback) {
 
 
 UserSchema.statics.getDashboard = function (email, callback) {
-   this.model('User').find({
-      'email': email
-   }, {
-      'dashboards': 1,
-      '_id': 0
-   },function(err, data) {
-      var tabs = {};
-      if(data && data.length > 0 && data[0].dashboards.length > 0) {
-         tabs = data[0].dashboards[0].tabs;
-      }
-      callback(tabs);
-   });
+	this.model('User')
+		.findOne({
+		'email': email
+	}, {
+		'_id': 0,
+		'password':0
+	}).populate('widgetId')
+		.exec(function(err, data) {
+		callback(data.dashboards);
+	});
 }
 
 UserSchema.statics.getTabs = function (email, callback) {
