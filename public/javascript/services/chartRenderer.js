@@ -268,7 +268,7 @@ angular.module('vbiApp')
 			 .orient("left")
 			 .tickFormat(d3.format("1s"));
 
-		var svg3 = d3.select(chartContainer + " #barChart").append("svg")
+		var svg3 = d3.select(chartContainer).append("svg")
 			 .attr("width", width + margin.left + margin.right)
 			 .attr("height", height + margin.top + margin.bottom)
 		  .append("g")
@@ -372,7 +372,7 @@ angular.module('vbiApp')
 			 .orient("left")
 			 .tickFormat(d3.format(".2s"));
 
-		var svg10 = d3.select(chartContainer + " #barChart").append("svg")
+		var svg10 = d3.select(chartContainer).append("svg")
 			 .attr("width", width + margin.left + margin.right)
 			 .attr("height", height + margin.top + margin.bottom)
 			 .append("g")

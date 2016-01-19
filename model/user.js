@@ -5,7 +5,6 @@ var UserSchema = mongoose.Schema({
    name: String,
    email: String,
    password: String,
-//	widgetId: {type: mongoose.Schema.ObjectId, ref: 'Widget'},
    preferences:[{
       _id: false,
       theme:String,
@@ -16,8 +15,10 @@ var UserSchema = mongoose.Schema({
       tabs: [{tabTitle: String,
          tabId: String,
          rows: [{
-            colWidth: String,
-            widgetId: {type: mongoose.Schema.ObjectId, ref: 'Widget'}
+				columns:[{
+					colWidth: String,
+            	widgetId: {type: mongoose.Schema.ObjectId, ref: 'Widget'}
+				}]
          }]
       }]
    }]
@@ -42,8 +43,9 @@ UserSchema.statics.getDashboard = function (email, callback) {
 	}, {
 		'_id': 0,
 		'password':0
-	}).deepPopulate('dashboards')
+	}).populate('dashboards.tabs.rows.columns.widgetId')
 		.exec(function(err, data) {
+//		console.log(data.dashboards);
 		callback(data.dashboards);
 	});
 }

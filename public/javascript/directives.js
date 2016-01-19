@@ -19,23 +19,21 @@ angular.module('vbiApp')
 		  templateUrl: 'views/directives/chart.html',
 		  replace: true,
 		  scope: {
-			  dataUrl: "@",
-			  chartRenderer : "@"
+			  jsonUrl: "@",
+			  chartRendererMethod : "@"
 		  },
 		  
 		  link: function(scope,elements, attrs) {
-			  scope.dataUrl = 'chartdata/gdpContinent';
-			  scope.chartRendererFunction = 'plotContinentChart';
-//			  var a = returnWidth();
-			  var w = chartRenderer.getContainerWidth(elements[0]);
-			  
+			  console.log("url", scope.dataUrl);
+			  console.log("rederer method", scope.chartRendererMethod);
+//			  chartRenderer[scope.chartRendererMethod](elements[0], 500, scope.dataUrl);
 			  scope.$watch(function() {
 				  		return elements[0].clientWidth;
 			 		}, function(value){
 				  		if(value >0) {
-//							console.log(scope.chartRenderer);
-							console.log(value);
-							chartRenderer['plotContinentChart'](elements[0], value, scope.dataUrl);
+							debugger;
+							
+							chartRenderer[scope.chartRendererMethod](elements[0], value, scope.dataUrl);
 						}
 			 	});
 			  
