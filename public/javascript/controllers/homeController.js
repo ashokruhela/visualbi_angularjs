@@ -1,5 +1,5 @@
 angular.module('vbiApp')
-    .controller('homeController', ['$rootScope', '$scope', 'userManager', 'widgetManager', function($rootScope, $scope, userManager, widgetManager) {
+    .controller('homeController', ['$rootScope', '$scope', 'userManager', 'widgetManager', '$location', function($rootScope, $scope, userManager, widgetManager, $location) {
 		 $scope.user = $rootScope.loggedInUser;
 		 
 		 $scope.tabs = [];
@@ -13,6 +13,14 @@ angular.module('vbiApp')
 					 }
 				}
 		});
+		 
+		$scope.logout = function(event) {
+//			event.preventDefault();
+			debugger;
+			console.log('logout requested');
+			window.localStorage['session'] = null;
+			$location.url("/");
+		};
 		 
 		$scope.returnWidth = function() {
 			debugger;

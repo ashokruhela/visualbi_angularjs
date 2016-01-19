@@ -14,6 +14,11 @@ router.get('/', function(req, res, next) {
    res.render('index');
 });
 
+router.get('/logout', function(req, res, next) {
+	req.logout();
+   res.render('index');
+});
+
 router.post('/login', passport.authenticate('local'),function(req, res){
 	 res.json(req.user);
 //	 res.json({
