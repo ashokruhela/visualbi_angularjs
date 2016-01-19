@@ -18,7 +18,21 @@ angular.module('vbiApp')
             controller: 'widgetController'
         }).otherwise({
         	redirectTo: '/home'
-      });;
+      })
         
-        
+}]).run(['$rootScope','$location', function($rootScope, $location) {
+	  $rootScope.$on('$routeChangeStart', function(event, next, current) {
+		  //hard code not login multipl times
+		  $rootScope.loggedInUser = {name: "Ashok Kumar", email: "ashok.kumar6@wipro.com"};
+		  
+		  if($rootScope.loggedInUser == null) {
+			  //nobody logged in, redirect to /
+			  if ( next.templateUrl !== "views/login.html") {
+				  $location.path("/");
+				}
+		  } 
+		  else {
+			  $location.path("/home");
+		  }
+	  });
 }]);

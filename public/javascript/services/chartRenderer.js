@@ -26,12 +26,25 @@ angular.module('vbiApp')
 
 	};
 	
-	chartLoader.hello = function(){
-		console.log('calling chart method');
-	};
-	function plotContinentChart (chartContainer, containerWidth, jsonDataUrl){
-		debugger;
+	chartLoader.getContainerWidth = function(chartContainer){
+		var screenWidth = $(".container").width();
+		var chartWidth = $(chartContainer).width();
+		
+		var a = $('#tab1 #568df38e8aaf007e56689714').width();
+		var b = $('.col-sm-12').width();
+		var c = $('.col-sm-6').width();
+		
+		if(chartWidth > 100) {
+		  var w = $(chartContainer).width();
+		  var parentWidth = $(chartContainer).offsetParent().width();
+			
+		  chartWidth = (w * 100)/parentWidth;
+		}
 
+		return (screenWidth * chartWidth)/100;
+	};
+		
+	function plotContinentChart (chartContainer, containerWidth, jsonDataUrl){
 		width = containerWidth || width;
 		width = containerWidth -margin.left - margin.right;
 		var x = d3.scale.ordinal()
@@ -455,5 +468,6 @@ angular.module('vbiApp')
 
 		});
 	}
-		return chartLoader;
+		
+	return chartLoader;
 }]);

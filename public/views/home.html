@@ -4,11 +4,11 @@
        <div class = "row" ng-repeat = "row in tab.rows">
 			  <div class = "col-sm-{{ col.colWidth }}" ng-repeat = "col in row.columns">
 					<div class="panel panel-primary">
-						<div class="panel-heading">
+						<div class="panel-heading" id="{{col.widgetId}}">
 							<h3 class = "panel-title">Widget title goes here</h3>
 						</div>
 						<div class="panel-body">
-							<chart-panel data-url = "{{ col.widgetId }}" chart-renderer-function = "{{ col.widgetId }}"></chart-panel>
+							<chart-panel col-width="{{ col.colWidth }}" data-url = "{{ col.widgetId }}" chart-renderer-function = "{{ col.widgetId }}" return-width="returnWidth()"></chart-panel>
 						</div>
 						<div class="panel-footer">
 						   <p>Comments will go here</p>
@@ -17,4 +17,5 @@
 			  </div>
        </div>
     </uib-tab>
+    <load></load>
 </uib-tabset>

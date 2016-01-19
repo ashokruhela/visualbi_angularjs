@@ -20,14 +20,17 @@ angular.module('vbiApp')
 		  replace: true,
 		  scope: {
 			  dataUrl: "@",
-			  chartRendererFunction : "@"
+			  chartRendererFunction : "@",
+			  returnWidth: "&",
+			  colWidth: "@"
 		  },
 		  link: function(scope,elements, attrs) {
 			  debugger;
-			  console.log(scope);
 			  scope.dataUrl = 'chartdata/gdpContinent';
 			  scope.chartRendererFunction = 'plotContinentChart';
-			  chartRenderer[scope.chartRendererFunction](elements[0], 400, scope.dataUrl);
+//			  var a = returnWidth();
+			  var w = chartRenderer.getContainerWidth(elements[0]);
+			  chartRenderer[scope.chartRendererFunction](elements[0], 500, scope.dataUrl);
 		  }
 	  };
 }]);

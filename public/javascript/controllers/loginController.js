@@ -1,6 +1,6 @@
 angular.module('vbiApp')
-    .controller('loginController', ['$scope', '$location', 'userManager', function($scope, $location, userManager) {
-	 $scope.loggedInUser = {};
+    .controller('loginController', ['$rootScope', '$scope', '$location', 'userManager', function($rootScope, $scope, $location, userManager) {
+	 $rootScope.loggedInUser = {};
     $scope.user = {
         email: "",
         password: ""
@@ -11,10 +11,10 @@ angular.module('vbiApp')
 		  userManager.login($scope.user, function(err, data) {
 				if(!err) {
 					 //logged in successfully. load the dashboard
-					 $scope.loggedInUser = data;
-					 $scope.$watch($scope.loggedInUser, function(){
-						  userManager.user = $scope.loggedInUser;
-					 });
+					 $rootScope.loggedInUser = data;
+//					 $scope.$watch($scope.loggedInUser, function(){
+//						  userManager.user = $scope.loggedInUser;
+//					 });
 					 
 					 var url = $location.url();
 					 $location.url(url + 'home');
