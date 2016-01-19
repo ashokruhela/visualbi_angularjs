@@ -12,6 +12,7 @@ angular.module('vbiApp')
 				if(!err) {
 					 //logged in successfully. load the dashboard
 					 $rootScope.loggedInUser = data;
+					window.localStorage['session'] = JSON.stringify($rootScope.loggedInUser);
 //					 $scope.$watch($scope.loggedInUser, function(){
 //						  userManager.user = $scope.loggedInUser;
 //					 });

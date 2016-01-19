@@ -22,10 +22,14 @@ angular.module('vbiApp')
         
 }]).run(['$rootScope','$location', function($rootScope, $location) {
 	  $rootScope.$on('$routeChangeStart', function(event, next, current) {
-		  //hard code not login multipl times
-		  $rootScope.loggedInUser = {name: "Ashok Kumar", email: "ashok.kumar6@wipro.com"};
+		  debugger;
+		  //hard code not login to avoid multiple times
+//		  $rootScope.loggedInUser = {name: "Ashok Kumar", email: "ashok.kumar6@wipro.com"};
+		  if(window.localStorage['session']) {
+				$rootScope.loggedInUser= JSON.parse(window.localStorage['session'])  
+		  }
 		  
-		  if($rootScope.loggedInUser == null) {
+		  if(!$rootScope.loggedInUser) {
 			  //nobody logged in, redirect to /
 			  if ( next.templateUrl !== "views/login.html") {
 				  $location.path("/");
