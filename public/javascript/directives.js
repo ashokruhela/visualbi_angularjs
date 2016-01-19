@@ -20,10 +20,9 @@ angular.module('vbiApp')
 		  replace: true,
 		  scope: {
 			  dataUrl: "@",
-			  chartRendererFunction : "@",
-			  returnWidth: "&",
-			  colWidth: "@"
+			  chartRenderer : "@"
 		  },
+		  
 		  link: function(scope,elements, attrs) {
 			  scope.dataUrl = 'chartdata/gdpContinent';
 			  scope.chartRendererFunction = 'plotContinentChart';
@@ -34,8 +33,8 @@ angular.module('vbiApp')
 				  		return elements[0].clientWidth;
 			 		}, function(value){
 				  		if(value >0) {
-							console.log(scope.chartRendererFunction);
-							console.log(chartRenderer[scope.chartRendererFunction]);
+//							console.log(scope.chartRenderer);
+							console.log(value);
 							chartRenderer['plotContinentChart'](elements[0], value, scope.dataUrl);
 						}
 			 	});

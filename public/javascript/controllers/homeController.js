@@ -21,12 +21,5 @@ angular.module('vbiApp')
 			window.localStorage['session'] = null;
 			$location.url("/");
 		};
-		 
-		$scope.returnWidth = function() {
-			debugger;
-			var b = $('.col-sm-12').width();
-			var c = $('.col-sm-6').width();
-			console.log("width here", width);
-			return width;
-		};
+		
 }]);
