@@ -8,7 +8,6 @@ router.get('/:id', function(req, res, next) {
 	
     if(email) {
         User.getDashboard(email, function(data){
-			  console.log("in dashboard. ", data);
             res.send(data);
         });
     } else

@@ -2,9 +2,19 @@
 <uib-tabset class="wrap">
     <uib-tab id="{{ tab.tabId }}" heading = "{{ tab.tabTitle }}" ng-repeat= "tab in tabs">
        <div class = "row" ng-repeat = "row in tab.rows">
-           <div class = "col-sm-{{ col.colWidth }}" ng-repeat = "col in row.columns">
-             <widget-panel></widget-panel>
-           </div>
+			  <div class = "col-sm-{{ col.colWidth }}" ng-repeat = "col in row.columns">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class = "panel-title">Widget title goes here</h3>
+						</div>
+						<div class="panel-body">
+							<chart-panel data-url = "{{ col.widgetId }}" chart-renderer-function = "{{ col.widgetId }}"></chart-panel>
+						</div>
+						<div class="panel-footer">
+						   <p>Comments will go here</p>
+						</div>
+					</div>
+			  </div>
        </div>
     </uib-tab>
 </uib-tabset>

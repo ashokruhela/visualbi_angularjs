@@ -1,9 +1,11 @@
- var mongoose = require('mongoose');
+ var mongoose = require('mongoose'),
+	  deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 var UserSchema = mongoose.Schema({
    name: String,
    email: String,
    password: String,
+//	widgetId: {type: mongoose.Schema.ObjectId, ref: 'Widget'},
    preferences:[{
       _id: false,
       theme:String,
@@ -14,9 +16,8 @@ var UserSchema = mongoose.Schema({
       tabs: [{tabTitle: String,
          tabId: String,
          rows: [{
-            rowId: String,
             colWidth: String,
-            widgetId: {type: String, ref: 'Widget'}
+            widgetId: {type: mongoose.Schema.ObjectId, ref: 'Widget'}
          }]
       }]
    }]
@@ -32,6 +33,7 @@ UserSchema.statics.getUser = function (email, callback) {
    });
 }
 
+UserSchema.plugin(deepPopulate);
 
 UserSchema.statics.getDashboard = function (email, callback) {
 	this.model('User')
@@ -40,7 +42,7 @@ UserSchema.statics.getDashboard = function (email, callback) {
 	}, {
 		'_id': 0,
 		'password':0
-	}).populate('widgetId')
+	}).deepPopulate('dashboards')
 		.exec(function(err, data) {
 		callback(data.dashboards);
 	});

@@ -5,7 +5,6 @@ var express = require('express'),
 
 router.get('/dashboard', function(req, res, next) {
     var email = req.email;
-	console.log("in dashboard. email is ", email);
     if(email) {
         User.getDashboard(email, function(data){
             res.send(data);

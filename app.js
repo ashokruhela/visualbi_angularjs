@@ -10,7 +10,7 @@ var express = require('express'),
     userRouter = require('./routes/userRouter'),
     widgetRouter = require('./routes/widgetRouter'),
 	 dashboardRouter = require('./routes/dashboardRouter'),
-    chartCommentRoute = require('./routes/chartComments'),
+    chartdataRouter = require('./routes/chartdataRouter'),
     dbConfig = require('./config/db');
 
 mongoose.connect(dbConfig.url);
@@ -50,6 +50,7 @@ app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/widgets', widgetRouter);
+app.use('/chartdata', chartdataRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

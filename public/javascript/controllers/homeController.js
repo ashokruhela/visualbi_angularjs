@@ -9,6 +9,5 @@ angular.module('vbiApp')
 								$scope.tabs = dashboard.tabs;
 					 }
 				}
-			});
-        
+		});
 }]);
