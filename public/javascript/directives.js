@@ -25,12 +25,22 @@ angular.module('vbiApp')
 			  colWidth: "@"
 		  },
 		  link: function(scope,elements, attrs) {
-			  debugger;
 			  scope.dataUrl = 'chartdata/gdpContinent';
 			  scope.chartRendererFunction = 'plotContinentChart';
 //			  var a = returnWidth();
 			  var w = chartRenderer.getContainerWidth(elements[0]);
-			  chartRenderer[scope.chartRendererFunction](elements[0], 500, scope.dataUrl);
+			  
+			  scope.$watch(function() {
+				  		return elements[0].clientWidth;
+			 		}, function(value){
+				  		if(value >0) {
+							console.log(scope.chartRendererFunction);
+							console.log(chartRenderer[scope.chartRendererFunction]);
+							chartRenderer['plotContinentChart'](elements[0], value, scope.dataUrl);
+						}
+			 	});
+			  
+			  
 		  }
 	  };
 }]);

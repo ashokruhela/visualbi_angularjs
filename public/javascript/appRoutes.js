@@ -24,7 +24,6 @@ angular.module('vbiApp')
         
 }]).run(['$rootScope','$location', function($rootScope, $location) {
 	  $rootScope.$on('$routeChangeStart', function(event, next, current) {
-		  debugger;
 		  //hard code not login to avoid multiple times
 //		  $rootScope.loggedInUser = {name: "Ashok Kumar", email: "ashok.kumar6@wipro.com"};
 		  if(window.localStorage['session']) {
