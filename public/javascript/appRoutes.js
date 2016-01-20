@@ -22,12 +22,15 @@ angular.module('vbiApp')
         		redirectTo: '/home'
       });
         
-}]).run(['$rootScope','$location', function($rootScope, $location) {
+}]).run(['$rootScope','$location', '$cookies', function($rootScope, $location, $cookies) {
+		//cookie name which will store authentication token
+		$rootScope.authToken = "authToken";
+	
 	  $rootScope.$on('$routeChangeStart', function(event, next, current) {
-		  //hard code not login to avoid multiple times
-//		  $rootScope.loggedInUser = {name: "Ashok Kumar", email: "ashok.kumar6@wipro.com"};
-		  if(window.localStorage['session']) {
-				$rootScope.loggedInUser= JSON.parse(window.localStorage['session']);  
+		  var authToken = $cookies.get($rootScope.authToken);
+		  
+		  if(authToken) {
+				$rootScope.loggedInUser= JSON.parse(authToken);  
 		  }
 		  
 		  if(!$rootScope.loggedInUser) {

@@ -25,7 +25,7 @@ angular.module('vbiApp')
 			  chartId:"@"
 		  },
 		  
-		  link: function(scope,elements, attrs) {
+		  link: function(scope, elements, attrs) {
 			  if(parseInt(elements[0].clientWidth) === 0) {
 				  var watchMethod = scope.$watch(function() {
 				  		return elements[0].clientWidth;

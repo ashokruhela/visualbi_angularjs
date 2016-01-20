@@ -1,6 +1,6 @@
 (function(){
 //    alert('hello angular');
-    angular.module('vbiApp', ['ngRoute', 'ui.bootstrap']);
+    angular.module('vbiApp', ['ngRoute', 'ui.bootstrap', 'ngCookies']);
     
     
 })();
