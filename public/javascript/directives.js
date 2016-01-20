@@ -14,30 +14,37 @@ angular.module('vbiApp')
 		  }
 	  };
     
-}]).directive('chartPanel', ['chartRenderer', function(chartRenderer){
+}]).directive('chartPanel', ['plotContinentChart', 'gdpPerCapitaBarChart', 'gdpStackedBarChart', 'plotNorthEast', function(plotContinentChart, gdpPerCapitaBarChart, gdpStackedBarChart, plotNorthEast){
 	  return {
+		  
 		  templateUrl: 'views/directives/chart.html',
 		  replace: true,
 		  scope: {
-			  jsonUrl: "@",
-			  chartRendererMethod : "@"
+			  parameters: "@",
+			  chartRendererMethod : "@",
+			  chartId:"@"
 		  },
 		  
 		  link: function(scope,elements, attrs) {
-			  console.log("url", scope.dataUrl);
-			  console.log("rederer method", scope.chartRendererMethod);
-//			  chartRenderer[scope.chartRendererMethod](elements[0], 500, scope.dataUrl);
-			  scope.$watch(function() {
+			  if(parseInt(elements[0].clientWidth) === 0) {
+				  var watchMethod = scope.$watch(function() {
 				  		return elements[0].clientWidth;
 			 		}, function(value){
 				  		if(value >0) {
-							debugger;
-							
-							chartRenderer[scope.chartRendererMethod](elements[0], value, scope.dataUrl);
+							var chartRenderer = scope.chartRendererMethod + ".render" + '(elements[0]' + ', ' + value + ', "' + scope.parameters 								+ '")';
+							eval(chartRenderer)
+								.then(function(data) {
+								console.log(scope.chartRendererMethod + ' chart plotted successfully');
+							});
 						}
 			 	});
-			  
-			  
+				
+//				if(!scope.watchList)
+//			  if(scope.watchList && !scope.watchList[scope.chartId]) {
+//				  	debugger;
+//				  	scope.watchList[scope.chartId] = watchMethod;
+//					}
+			  }
 		  }
 	  };
 }]);

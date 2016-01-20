@@ -15,7 +15,6 @@ angular.module('vbiApp')
 		});
 		 
 		$scope.logout = function(event) {
-//			event.preventDefault();
 			debugger;
 			console.log('logout requested');
 			window.localStorage['session'] = null;

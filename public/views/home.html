@@ -8,7 +8,7 @@
 							<h3 class = "panel-title">{{ col.widgetId.title }}</h3>
 						</div>
 						<div class="panel-body">
-							<chart-panel json-url = "{{ col.widgetId.url }}" chart-renderer-method = "{{ col.widgetId.chartRenderer }}" ></chart-panel>
+							<chart-panel chart-id="{{ $index }}" parameters = "{{ col.widgetId.url }}" chart-renderer-method = "{{ col.widgetId.chartRenderer }}" ></chart-panel>
 						</div>
 						<div class="panel-footer">
 						   <p>Comments will go here</p>
