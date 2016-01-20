@@ -34,16 +34,10 @@ angular.module('vbiApp')
 							var chartRenderer = scope.chartRendererMethod + ".render" + '(elements[0]' + ', ' + value + ', "' + scope.parameters 								+ '")';
 							eval(chartRenderer)
 								.then(function(data) {
-								console.log(scope.chartRendererMethod + ' chart plotted successfully');
+//								console.log(scope.chartRendererMethod + ' chart plotted successfully');
 							});
 						}
 			 	});
-				
-//				if(!scope.watchList)
-//			  if(scope.watchList && !scope.watchList[scope.chartId]) {
-//				  	debugger;
-//				  	scope.watchList[scope.chartId] = watchMethod;
-//					}
 			  }
 		  }
 	  };

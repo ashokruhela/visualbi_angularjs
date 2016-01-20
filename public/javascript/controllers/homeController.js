@@ -4,7 +4,8 @@ angular.module('vbiApp')
 		 
 		 $scope.tabs = [];
 		 
-		 userManager.getDashboard($rootScope.loggedInUser.email, function(dashboards) {
+		 userManager.getDashboard($rootScope.loggedInUser.email)
+			 .then(function(dashboards) {
 			// Make additional dashboard. Assuming that there is only one dashboard now
 			if(dashboards && dashboards.length > 0) {
 				var dashboard = dashboards[0];
@@ -12,7 +13,7 @@ angular.module('vbiApp')
 								$scope.tabs = dashboard.tabs;
 					 }
 				}
-		});
+		 });
 		 
 		$scope.logout = function(event) {
 			debugger;
