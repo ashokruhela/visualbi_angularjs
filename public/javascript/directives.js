@@ -22,7 +22,8 @@ angular.module('vbiApp')
 		  scope: {
 			  parameters: "@",
 			  chartRendererMethod : "@",
-			  chartId:"@"
+			  chartId:"@",
+			  isLoading: "="
 		  },
 		  
 		  link: function(scope, elements, attrs) {
@@ -34,8 +35,9 @@ angular.module('vbiApp')
 							var chartRenderer = scope.chartRendererMethod + ".render" + '(elements[0]' + ', ' + value + ', "' + scope.parameters 								+ '")';
 							eval(chartRenderer)
 								.then(function(data) {
-//								scope.$apply();
+								scope.isLoading = false;
 								watchMethod();
+								scope.$apply();
 //								console.log(scope.chartRendererMethod + ' chart plotted successfully');
 							});
 						}

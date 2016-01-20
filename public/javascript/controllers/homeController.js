@@ -1,7 +1,7 @@
 angular.module('vbiApp')
     .controller('homeController', ['$rootScope', '$scope', 'userManager', 'widgetManager', '$location', '$cookies', function($rootScope, $scope, userManager, widgetManager, $location, $cookies) {
 		 $scope.user = $rootScope.loggedInUser;
-		 
+		 $scope.isLoading = true;
 		 $scope.tabs = [];
 		 
 		 userManager.getDashboard($rootScope.loggedInUser.email)
@@ -16,9 +16,6 @@ angular.module('vbiApp')
 		 });
 		 
 		$scope.logout = function(event) {
-			debugger;
-			console.log('logout requested');
-			
 			$cookies.remove($rootScope.authToken);
 			$location.url("/");
 		};
