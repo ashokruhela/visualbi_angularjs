@@ -34,6 +34,8 @@ angular.module('vbiApp')
 							var chartRenderer = scope.chartRendererMethod + ".render" + '(elements[0]' + ', ' + value + ', "' + scope.parameters 								+ '")';
 							eval(chartRenderer)
 								.then(function(data) {
+//								scope.$apply();
+								watchMethod();
 //								console.log(scope.chartRendererMethod + ' chart plotted successfully');
 							});
 						}
