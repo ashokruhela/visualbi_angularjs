@@ -49,7 +49,7 @@ angular.module('vbiApp')
 					 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 				d3.json(jsonDataUrl, function(error, data) {
 				  if (error) throw error;
-
+					data = JSON.parse(data);
 				  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
 
 				  data.forEach(function(d) {

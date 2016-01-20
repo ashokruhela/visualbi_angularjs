@@ -53,8 +53,7 @@ angular.module('vbiApp')
 
 				d3.json("chartData/northEast", function(error, nData) {
 				  if (error) throw error;
-				  //var data = d3.keys(nData);
-				  //console.log(data);
+				  data = JSON.parse(data);
 
 				 var data = [];
 				 for(d in nData) {

@@ -9,7 +9,7 @@ router.get('/:chartType', function(req, res, next) {
    var chartType = req.params.chartType;
    var filePath = path.join(__dirname, '../public/data/chartdata/' + chartType + ".json");
       var chartJsonData = util.readFile(filePath);
-      res.send(chartJsonData);
+      res.json(chartJsonData);
 });
 
 module.exports = router;

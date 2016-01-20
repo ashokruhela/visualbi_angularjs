@@ -9,10 +9,10 @@ router.get('/:id', function(req, res, next) {
     if(email) {
         User.getDashboard(email, function(data){
 			  //change to res.json
-            res.send(data);
+            res.json(data);
         });
     } else
-        res.send({});
+        res.json({});
 });
 
 module.exports = router;

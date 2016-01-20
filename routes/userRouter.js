@@ -7,20 +7,20 @@ router.get('/dashboard', function(req, res, next) {
     var email = req.email;
     if(email) {
         User.getDashboard(email, function(data){
-            res.send(data);
+            res.json(data);
         });
     } else
-        res.send({});
+        res.json({});
 });
 
 router.get('/:id', function(req, res, next) {
     var email = req.params.id;
     if(email) {
         User.getUser(email, function(user){
-            res.send(user);
+            res.json(user);
         });
     } else
-        res.send({});
+        res.json({});
 });
 
 module.exports = router;

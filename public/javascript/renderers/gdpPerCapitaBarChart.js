@@ -51,9 +51,8 @@ angular.module('vbiApp')
 
 				d3.json(jsonDataUrl, function(error, data) {
 				  if (error) throw error;
-
+					data = JSON.parse(data);
 				  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "country"; }));
-
 				  data.forEach(function(d) {
 					 var y0 = 0;
 					 d.values = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });

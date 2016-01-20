@@ -16,16 +16,11 @@ router.get('/', function(req, res, next) {
 
 router.get('/logout', function(req, res, next) {
 	req.logout();
-   res.render('index');
+//   res.render('index');
 });
 
 router.post('/login', passport.authenticate('local'),function(req, res){
 	 res.json(req.user);
-//	 res.json({
-//		  email: req.user.email,
-//		  password: req.user.name
-//	 });
-	 
 });
 
 
