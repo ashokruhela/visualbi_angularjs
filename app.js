@@ -37,8 +37,8 @@ app.use(flash());
 
 //initialize passort sessions
 app.use(expressSession({
-   secret: 'cookie_secret',
-   cookie: { maxAge: 60000 },
+   secret: 'tobo',
+   cookie: { maxAge: 360*5 },
    proxy: true,
    resave: true,
    saveUninitialized: true

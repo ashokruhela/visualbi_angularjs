@@ -11,7 +11,7 @@
 							<div ng-show="isLoading">
 								<img src="/images/loading.gif" /> loading...	
 							</div>
-							<chart-panel is-loading="isLoading" chart-id="{{ $index }}" parameters = "{{ col.widgetId.url }}" chart-renderer-method = "{{ col.widgetId.chartRenderer }}" ></chart-panel>
+							<chart-panel is-loading="isLoading" parameters = "{{ col.widgetId.parameters }}" chart-renderer-method = "{{ col.widgetId.chartRenderer }}" ></chart-panel>
 						</div>
 						<div class="panel-footer">
 						   <p>Comments will go here</p>

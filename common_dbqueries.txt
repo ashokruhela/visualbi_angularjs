@@ -1,3 +1,13 @@
 update userid
 ---------------------------------------------------------------
 db.users.update({"email":"ashok.kumar6@wipro.com"}, {$set: {"userid":ObjectId("56a11a224de3516e7c42c26e")}})
+
+db.users.find({"userid":ObjectId("56a11a224de3516e7c42c26e")}).pretty()
+ - ashok.kumar@wipro.com
+db.users.update({"userid":ObjectId("56a11a224de3516e7c42c26e")}, {$set:{"parameters":'{"tempkey":"hello"}'}})
+db.users.remove({"email":{$ne:"ashok.kumar6@wipro.com"}}, false, true)
+568df38e8aaf007e56689714
+db.widgets.update({"_id":ObjectId("568df38e8aaf007e56689714")}, {$set:{"parameters":{"url":"chartdata/gdpBarChart"}}})
+db.widgets.update({"_id":ObjectId("568df6fd8aaf007e56689717")}, {$set:{"parameters":{"url":"chartdata/gdpContinent"}}})
+db.widgets.update({"_id":ObjectId("568df7978aaf007e56689718")}, {$set:{"parameters":{"url":"chartdata/gdpPerCapitaBarChart"}}})
+db.widgets.find().pretty()

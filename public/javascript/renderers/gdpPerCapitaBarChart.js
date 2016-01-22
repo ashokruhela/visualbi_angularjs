@@ -7,9 +7,11 @@ angular.module('vbiApp')
 		var colors = ["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"];
 		var enableLegend = true;
 		
-		var chartRenderer = function(chartContainer, containerWidth, jsonDataUrl, config){
+		var chartRenderer = function(chartContainer, parameters){
 			return new Promise(function(resolve, reject){
-				if(config) {
+				var containerWidth = chartContainer.clientWidth, 
+					 jsonDataUrl = parameters.url;
+				if(parameters.config) {
 					//specific settings if provided for chart
 					margin.top = config.top || margin.top;
 					margin.bottom = config.bottom || margin.bottom;

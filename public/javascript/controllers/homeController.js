@@ -1,7 +1,7 @@
 angular.module('vbiApp')
     .controller('homeController', ['$rootScope', '$scope', 'userManager', '$location', '$cookies', function($rootScope, $scope, userManager, $location, $cookies) {
 		 $scope.user = $rootScope.loggedInUser;
-		 $scope.isLoading = true;
+		 $scope.isLoading = false;
 		 $scope.tabs = [];
 		 
 		 userManager.getDashboard($rootScope.loggedInUser.authToken)
@@ -22,7 +22,6 @@ angular.module('vbiApp')
 					$cookies.remove($rootScope.authToken);
 					$location.url('/');
 					//sometime it doesn't redirect
-					$scope.$apply() 
 			}).catch(function(err) {
 				
 				console.log(err);

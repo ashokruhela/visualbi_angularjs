@@ -22,20 +22,19 @@ angular.module('vbiApp')
 		  scope: {
 			  parameters: "@",
 			  chartRendererMethod : "@",
-			  chartId:"@",
 			  isLoading: "="
 		  },
 		  
 		  link: function(scope, elements, attrs) {
-			  console.log(elements[0].clientWidth);
 			  var watchMethod = scope.$watch(function() {
 				  		return elements[0].clientWidth;
 			 		}, function(value){
 				  		if(value > 0) {
-							var chartRenderer = scope.chartRendererMethod + ".render" + '(elements[0]' + ', ' + value + ', "' + scope.parameters 								+ '")';
+							var params = JSON.parse(scope.parameters);
+							var chartRenderer = scope.chartRendererMethod + '.render(elements[0], params)';
 							eval(chartRenderer)
 								.then(function(data) {
-								scope.isLoading = false;
+								
 								watchMethod();
 								scope.$apply();
 //								console.log(scope.chartRendererMethod + ' chart plotted successfully');
