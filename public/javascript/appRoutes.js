@@ -13,11 +13,6 @@ angular.module('vbiApp')
             controller: 'homeController'
         })
         
-        .when('/widget',{
-            templateUrl: 'views/widget.html',
-            controller: 'widgetController'
-        })
-			  
 			.otherwise({
         		redirectTo: '/home'
       });
