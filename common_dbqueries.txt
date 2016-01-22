@@ -11,3 +11,18 @@ db.widgets.update({"_id":ObjectId("568df38e8aaf007e56689714")}, {$set:{"paramete
 db.widgets.update({"_id":ObjectId("568df6fd8aaf007e56689717")}, {$set:{"parameters":{"url":"chartdata/gdpContinent"}}})
 db.widgets.update({"_id":ObjectId("568df7978aaf007e56689718")}, {$set:{"parameters":{"url":"chartdata/gdpPerCapitaBarChart"}}})
 db.widgets.find().pretty()
+
+
+var watchMethod = scope.$watch(function() {
+				  		return elements[0].clientWidth;
+			 		}, function(value){
+				  		if(value > 0) {
+							var chartRenderer = scope.chartRendererMethod + '.render(elements[0], JSON.parse(scope.parameters))';
+							eval(chartRenderer)
+								.then(function(data) {
+								
+								watchMethod();
+								scope.$apply();
+							});
+						}
+			 	});

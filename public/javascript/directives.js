@@ -26,21 +26,8 @@ angular.module('vbiApp')
 		  },
 		  
 		  link: function(scope, elements, attrs) {
-			  var watchMethod = scope.$watch(function() {
-				  		return elements[0].clientWidth;
-			 		}, function(value){
-				  		if(value > 0) {
-							var params = JSON.parse(scope.parameters);
-							var chartRenderer = scope.chartRendererMethod + '.render(elements[0], params)';
-							eval(chartRenderer)
-								.then(function(data) {
-								
-								watchMethod();
-								scope.$apply();
-//								console.log(scope.chartRendererMethod + ' chart plotted successfully');
-							});
-						}
-			 	});
+			  var chartRenderer = scope.chartRendererMethod + '.render(elements[0], JSON.parse(scope.parameters))';
+				eval(chartRenderer);
 		  }
 	  };
 }]);

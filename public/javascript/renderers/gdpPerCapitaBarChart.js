@@ -9,8 +9,9 @@ angular.module('vbiApp')
 		
 		var chartRenderer = function(chartContainer, parameters){
 			return new Promise(function(resolve, reject){
-				var containerWidth = chartContainer.clientWidth, 
+				var containerWidth = chartContainer.clientWidth,
 					 jsonDataUrl = parameters.url;
+				console.log("gdpPerCapita", containerWidth);
 				if(parameters.config) {
 					//specific settings if provided for chart
 					margin.top = config.top || margin.top;

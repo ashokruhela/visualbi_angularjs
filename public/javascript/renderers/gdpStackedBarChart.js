@@ -9,11 +9,9 @@ angular.module('vbiApp')
 		
 		var chartRenderer = function(chartContainer, parameters){
 			return new Promise(function(resolve, reject){
-					console.log(parameters); 
-					console.log(chartContainer.clientWidth); 
 				var containerWidth = chartContainer.clientWidth, 
 					 jsonDataUrl = parameters.url;
-				
+				console.log("gdpStacked", containerWidth);
 				if(parameters.config) {
 					//specific settings if provided for chart
 					margin.top = config.top || margin.top;

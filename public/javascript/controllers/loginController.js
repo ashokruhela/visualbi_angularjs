@@ -15,6 +15,7 @@ angular.module('vbiApp')
 					$rootScope.loggedInUser = data;
 					$cookies.put($rootScope.authToken, JSON.stringify($rootScope.loggedInUser));
 					 var url = $location.url();
+					console.log("url", url);
 					 $location.url(url + 'home');
 				} else {
 					 $scope.errorMessage = err;

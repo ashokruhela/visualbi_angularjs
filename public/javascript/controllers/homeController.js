@@ -1,5 +1,5 @@
 angular.module('vbiApp')
-    .controller('homeController', ['$rootScope', '$scope', 'userManager', '$location', '$cookies', function($rootScope, $scope, userManager, $location, $cookies) {
+    .controller('homeController', ['$rootScope', '$scope', 'userManager', '$location', '$cookies','$timeout', function($rootScope, $scope, userManager, $location, $cookies,$timeout) {
 		 $scope.user = $rootScope.loggedInUser;
 		 $scope.isLoading = false;
 		 $scope.tabs = [];
@@ -18,15 +18,11 @@ angular.module('vbiApp')
 		$scope.logout = function() {
 			userManager.logout()
 				.then(function() {
-					console.log('logged out');
 					$cookies.remove($rootScope.authToken);
 					$location.url('/');
-					//sometime it doesn't redirect
 			}).catch(function(err) {
-				
-				console.log(err);
-				alert(err);
-//				$cookies.remove($rootScope.authToken);
+				//even if any error redirect to home
+				$location.url('/');
 			});
 			
 		};
