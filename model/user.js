@@ -29,8 +29,10 @@ UserSchema.statics.getDashboard = function (userid, callback) {
 		'_id': 0,
 	}).populate('dashboards.tabs.rows.columns.widgetId')
 		.exec(function(err, data) {
-//		console.log(data.dashboards);
-		callback(data.dashboards);
+			var d={};
+			if(data && data.dashboards)
+					d = data.dashboards;
+			callback(d);
 	});
 }
 

@@ -1,8 +1,6 @@
 angular.module('vbiApp')
     .service('userManager', ['$http', function($http) {
         return {
-			  user: {},
-			  
 			  login: function(user, done) {
 				  $http.post('/login', {username:user.email, password:user.password})
 				  	.success(function (data, status, headers, config) {

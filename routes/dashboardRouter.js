@@ -9,6 +9,7 @@ router.get('/:id', function(req, res, next) {
     if(userid) {
         User.getDashboard(userid, function(data){
 			  //change to res.json
+			  console.log(data);
             res.json(data);
         });
     } else
