@@ -10,11 +10,10 @@ angular.module('vbiApp')
     $scope.login = function() {
 		  userManager.login($scope.user, function(err, data) {
 				if(!err) {
+					
 					 //logged in successfully. load the dashboard
 					$rootScope.loggedInUser = data;
 					$cookies.put($rootScope.authToken, JSON.stringify($rootScope.loggedInUser));
-//					window.localStorage['session'] = JSON.stringify($rootScope.loggedInUser);
-					 
 					 var url = $location.url();
 					 $location.url(url + 'home');
 				} else {

@@ -4,10 +4,8 @@ var express = require('express'),
     path = require('path'),
     utils = require('./utils'),
     User = require('../model/user'),
-    passport = require('./passport');
-
-
-
+    passport = require('passport'),
+	 Credential = require('../model/credential');
 
 // Login page
 router.get('/', function(req, res, next) {
@@ -16,17 +14,30 @@ router.get('/', function(req, res, next) {
 
 router.get('/logout', function(req, res, next) {
 	req.logout();
-//   res.render('index');
+	console.log("logged out successfully");
+   res.send("success");
 });
 
 router.post('/login', passport.authenticate('local'),function(req, res){
-	 res.json(req.user);
+	//authenticated successfully, send the authentication token
+	 res.json({"authToken": req.user._id, "name": req.user.name});
 });
-
 
 function isAuthenticated(req,res,next){
 	 if(req.isAuthenticated()) return next();
 	 res.redirect('/');
 }
 
+function restisterUser (req, res, next) {
+	Credential.registerUser({ username : "ashok.kumar6@wipro.com", name: "Ashok Kumar", password: "abc@123" })
+		.then(function(account) {
+			next();
+	})
+		
+
+//        passport.authenticate('local')(req, res, function () {
+//          res.redirect('/');
+//        });
+	
+}
 module.exports = router;

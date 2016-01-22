@@ -11,7 +11,8 @@ var express = require('express'),
     widgetRouter = require('./routes/widgetRouter'),
 	 dashboardRouter = require('./routes/dashboardRouter'),
     chartdataRouter = require('./routes/chartdataRouter'),
-    dbConfig = require('./config/db');
+    dbConfig = require('./config/db'),
+	 Credential = require('./model/credential');
 
 mongoose.connect(dbConfig.url);
 var db = mongoose.connection;
@@ -45,6 +46,7 @@ app.use(expressSession({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);

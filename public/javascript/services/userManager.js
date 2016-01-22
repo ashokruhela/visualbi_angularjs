@@ -13,23 +13,17 @@ angular.module('vbiApp')
 					  done(error, data);
 					  
 				  });
-				  
 			  },
-            
-           getUser: function(email, done) {
-				  $http({
-					  method: 'GET',
-					  url: '/user/' + email
-				 	}).then(function(res) {
-					  done(res.data);
-				 	});
-           },
-            
-           getDashboard: function(email) {
+			  
+			  logout: function(user, done) {
+				  return $http.get('/logout');
+			  },
+			  
+           getDashboard: function(userid) {
 				  return new Promise(function(resolve, reject) {
 					  $http({
 					  method: 'GET',
-					  url: '/dashboard/' + email
+					  url: '/dashboard/' + userid
 						}).then(function(res) {
 						  resolve(res.data);
 						});

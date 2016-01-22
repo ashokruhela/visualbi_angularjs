@@ -4,10 +4,10 @@ var express = require('express'),
 
 
 router.get('/:id', function(req, res, next) {
-    var email = req.params.id;
+    var userid = req.params.id; //it contains _id value of credentials
 	
-    if(email) {
-        User.getDashboard(email, function(data){
+    if(userid) {
+        User.getDashboard(userid, function(data){
 			  //change to res.json
             res.json(data);
         });

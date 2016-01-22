@@ -27,11 +27,11 @@ angular.module('vbiApp')
 		  },
 		  
 		  link: function(scope, elements, attrs) {
-			  if(parseInt(elements[0].clientWidth) === 0) {
-				  var watchMethod = scope.$watch(function() {
+			  console.log(elements[0].clientWidth);
+			  var watchMethod = scope.$watch(function() {
 				  		return elements[0].clientWidth;
 			 		}, function(value){
-				  		if(value >0) {
+				  		if(value > 0) {
 							var chartRenderer = scope.chartRendererMethod + ".render" + '(elements[0]' + ', ' + value + ', "' + scope.parameters 								+ '")';
 							eval(chartRenderer)
 								.then(function(data) {
@@ -42,7 +42,6 @@ angular.module('vbiApp')
 							});
 						}
 			 	});
-			  }
 		  }
 	  };
 }]);

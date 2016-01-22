@@ -1,0 +1,3 @@
+update userid
+---------------------------------------------------------------
+db.users.update({"email":"ashok.kumar6@wipro.com"}, {$set: {"userid":ObjectId("56a11a224de3516e7c42c26e")}})
