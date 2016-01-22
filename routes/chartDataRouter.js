@@ -12,4 +12,5 @@ router.get('/:chartType', function(req, res, next) {
       res.json(chartJsonData);
 });
 
+
 module.exports = router;

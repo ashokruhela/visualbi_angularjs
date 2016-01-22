@@ -12,7 +12,8 @@ var express = require('express'),
 	 dashboardRouter = require('./routes/dashboardRouter'),
     chartdataRouter = require('./routes/chartdataRouter'),
     dbConfig = require('./config/db'),
-	 Credential = require('./model/credential');
+	 Credential = require('./model/credential'),
+	 gridRouter = require('./routes/girdRouter');
 
 mongoose.connect(dbConfig.url);
 var db = mongoose.connection;
@@ -53,6 +54,7 @@ app.use('/user', userRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/widgets', widgetRouter);
 app.use('/chartdata', chartdataRouter);
+app.use('/execute', gridRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

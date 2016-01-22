@@ -13,8 +13,8 @@ CredentialSchema.plugin(passportLocalMongoose);
 
 CredentialSchema.statics.registerUser =function(user) {
 	return new Promise(function(resolve, reject) {
-		var newUser = new this({username: user.username, name: user.name});
-		this.register(newUser, user.password, function(err, account) {
+		var newUser = new CredentialSchema({username: user.username, name: user.name});
+		CredentialSchema.register(newUser, user.password, function(err, account) {
 			if(err)
 				reject(err);
 			else

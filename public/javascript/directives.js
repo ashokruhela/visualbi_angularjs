@@ -14,7 +14,7 @@ angular.module('vbiApp')
 		  }
 	  };
     
-}]).directive('chartPanel', ['plotContinentChart', 'gdpPerCapitaBarChart', 'gdpStackedBarChart', 'plotNorthEast', function(plotContinentChart, gdpPerCapitaBarChart, gdpStackedBarChart, plotNorthEast){
+}]).directive('chartPanel', ['plotContinentChart', 'gdpPerCapitaBarChart', 'gdpStackedBarChart', 'plotNorthEast', 'executeQueryService', function(plotContinentChart, gdpPerCapitaBarChart, gdpStackedBarChart, plotNorthEast, executeQueryService){
 	  return {
 		  
 		  templateUrl: 'views/directives/chart.html',
@@ -26,7 +26,14 @@ angular.module('vbiApp')
 		  },
 		  
 		  link: function(scope, elements, attrs) {
-			  var chartRenderer = scope.chartRendererMethod + '.render(elements[0], JSON.parse(scope.parameters))';
+			  var params;
+			  if(scope.parameters) {
+				  //parset to Object it not undefined.
+				  params = JSON.parse(scope.parameters);
+			  }
+				  
+			  var chartRenderer = scope.chartRendererMethod + '.render(elements[0], params)';
+			  console.log(chartRenderer);
 				eval(chartRenderer);
 		  }
 	  };

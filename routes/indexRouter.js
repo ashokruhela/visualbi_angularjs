@@ -8,7 +8,7 @@ var express = require('express'),
 	 Credential = require('../model/credential');
 
 // Login page
-router.get('/', function(req, res, next) {
+router.get('/',function(req, res, next) {
    res.render('index');
 });
 
@@ -30,11 +30,10 @@ function isAuthenticated(req,res,next){
 }
 
 function restisterUser (req, res, next) {
-	Credential.registerUser({ username : "ashok.kumar6@wipro.com", name: "Ashok Kumar", password: "abc@123" })
-		.then(function(account) {
-			next();
-	})
-		
+	Credential.register({ username : "wave1@wipro.com", name: "Wave 1"}, "abc@123", function(err, account) {
+		console.log("added");
+		next();
+	});
 
 //        passport.authenticate('local')(req, res, function () {
 //          res.redirect('/');

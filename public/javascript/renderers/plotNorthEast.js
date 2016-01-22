@@ -12,7 +12,7 @@ angular.module('vbiApp')
 				
 				var containerWidth = chartContainer.clientWidth, 
 					 jsonDataUrl = parameters.url;
-				console.log("plotNorthEast", containerWidth);
+//				console.log("plotNorthEast", containerWidth);
 				if(parameters.config) {
 					//specific settings if provided for chart
 					margin.top = config.top || margin.top;
