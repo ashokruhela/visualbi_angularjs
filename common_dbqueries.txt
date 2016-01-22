@@ -13,6 +13,9 @@ db.widgets.update({"_id":ObjectId("568df38e8aaf007e56689714")}, {$set:{"paramete
 db.widgets.update({"_id":ObjectId("568df6fd8aaf007e56689717")}, {$set:{"parameters":{"url":"chartdata/gdpContinent"}}})
 db.widgets.update({"_id":ObjectId("568df7978aaf007e56689718")}, {$set:{"parameters":{"url":"chartdata/gdpPerCapitaBarChart"}}})
 db.widgets.find().pretty()
+db.widgetId.insert({"title":"Mdx data grid display","chartRenderer":"executeQueryService", "comments":[],"parameters":{"url":{}}})
+
+"chartRenderer":"executeQueryService" 56a20902a375b2ea99a9b119
 db.users.update({"userid":ObjectId("56a11a224de3516e7c42c26e")}, {$unset:{"name":"", "email":"", "password":"","widgetId":"","parameters":""}})
 db.credentials.update({"_id":ObjectId("")})
 
@@ -20,7 +23,12 @@ var watchMethod = scope.$watch(function() {
 				  		return elements[0].clientWidth;
 			 		}, function(value){
 				  		if(value > 0) {
-							var chartRenderer = scope.chartRendererMethod + '.render(elements[0], JSON.parse(scope.parameters))';
+							var params;
+							  if(scope.parameters) {
+								  //parset to Object it not undefined.
+								  params = JSON.parse(scope.parameters);
+							  }
+							var chartRenderer = scope.chartRendererMethod + '.render(elements[0], params)';
 							eval(chartRenderer)
 								.then(function(data) {
 								
@@ -29,3 +37,14 @@ var watchMethod = scope.$watch(function() {
 							});
 						}
 			 	});
+				
+				
+var params;
+			  if(scope.parameters) {
+				  //parset to Object it not undefined.
+				  params = JSON.parse(scope.parameters);
+			  }
+				  
+			  var chartRenderer = scope.chartRendererMethod + '.render(elements[0], params)';
+			  console.log(chartRenderer);
+				eval(chartRenderer);

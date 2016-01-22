@@ -26,15 +26,24 @@ angular.module('vbiApp')
 		  },
 		  
 		  link: function(scope, elements, attrs) {
-			  var params;
-			  if(scope.parameters) {
-				  //parset to Object it not undefined.
-				  params = JSON.parse(scope.parameters);
-			  }
-				  
-			  var chartRenderer = scope.chartRendererMethod + '.render(elements[0], params)';
-			  console.log(chartRenderer);
-				eval(chartRenderer);
+			  var watchMethod = scope.$watch(function() {
+				  		return elements[0].clientWidth;
+			 		}, function(value){
+				  		if(value > 0) {
+							var params;
+							  if(scope.parameters) {
+								  //parset to Object it not undefined.
+								  params = JSON.parse(scope.parameters);
+							  }
+							var chartRenderer = scope.chartRendererMethod + '.render(elements[0], params)';
+							eval(chartRenderer)
+								.then(function(data) {
+								
+								watchMethod();
+								scope.$apply();
+							});
+						}
+			 	});
 		  }
 	  };
 }]);
