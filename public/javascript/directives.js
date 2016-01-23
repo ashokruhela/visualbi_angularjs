@@ -19,6 +19,7 @@ angular.module('vbiApp')
 		  
 		  templateUrl: 'views/directives/chart.html',
 		  replace: true,
+		  transclude: true,
 		  scope: {
 			  parameters: "@",
 			  chartRendererMethod : "@",
@@ -26,6 +27,7 @@ angular.module('vbiApp')
 		  },
 		  
 		  link: function(scope, elements, attrs) {
+			  console.log(elements[0].childNodes[1]);
 			  var watchMethod = scope.$watch(function() {
 				  		return elements[0].clientWidth;
 			 		}, function(value){
@@ -35,7 +37,7 @@ angular.module('vbiApp')
 								  //parset to Object it not undefined.
 								  params = JSON.parse(scope.parameters);
 							  }
-							var chartRenderer = scope.chartRendererMethod + '.render(elements[0], params)';
+							var chartRenderer = scope.chartRendererMethod + '.render(elements[0].childNodes[1], params)';
 							eval(chartRenderer)
 								.then(function(data) {
 								
