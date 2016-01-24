@@ -27,7 +27,7 @@ angular.module('vbiApp')
 			
 		};
 		 
-		$scope.fullScreen = function(chartRenderer, parameters, title) {
+		$scope.fullScreen = function(chartRenderer, parameters, title, comments) {
 			var modalConfig = {
 				templateUrl: 'chartModal',
 				controller: 'chartModalController',
@@ -37,7 +37,8 @@ angular.module('vbiApp')
 						return {
 							chartRendererMethod: chartRenderer,
 							parameters: parameters,
-							title: title
+							title: title,
+							comments: comments
 						};
 					}
 				}
