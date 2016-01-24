@@ -35,9 +35,23 @@ angular.module('vbiApp')
 				resolve: {
 					chartRenderer: chartRenderer,
 					parameters: parameters
+				},
+				link: function(scope, element, attrs) {
+					console.log(element);
 				}
 			};
 			var modalInstance = $uibModal.open(modalConfig);
+			console.log(modalInstance.opened);
+			modalInstance.rendered.then(function(a, b,c) {
+				var modalElement = angular.element($('#chartModal .modal-body'));
+				console.log("modal renderd",modalElement);
+				modalElement.append('<div>"Hello - set from home"</div>');
+			});
+			modalInstance.opened.then(function(a, b,c) {
+				var modalElement = angular.element($('#chartModal .modal-body'));
+				console.log("modal element",modalElement);
+				modalElement.innerHTML = "Hello - set from home";
+			});
 //			modalInstance.result.then(function(selectedItem) {
 //				debugger;
 //				alert('some stuff before openeing')

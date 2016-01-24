@@ -1,5 +1,5 @@
 <header-directive></header-directive>
-<div ng-include="'views/dialogs/chartModal.html'"></div>
+<div ng-include="'views/dialogs/chartModal.tpl.html'"></div>
 <uib-tabset class="wrap">
     <uib-tab id="{{ tab.tabId }}" heading = "{{ tab.tabTitle }}" ng-repeat= "tab in tabs">
        <div class = "row" ng-repeat = "row in tab.rows">
