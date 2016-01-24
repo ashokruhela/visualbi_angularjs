@@ -1,5 +1,5 @@
 angular.module('vbiApp')
-    .controller('homeController', ['$rootScope', '$scope', 'userManager', '$location', '$cookies','$timeout', function($rootScope, $scope, userManager, $location, $cookies,$timeout) {
+    .controller('homeController', ['$rootScope', '$scope', 'userManager', '$location', '$cookies','$timeout', '$uibModal', function($rootScope, $scope, userManager, $location, $cookies, $timeout, $uibModal) {
 		 $scope.user = $rootScope.loggedInUser;
 		 $scope.isLoading = false;
 		 $scope.tabs = [];
@@ -26,5 +26,24 @@ angular.module('vbiApp')
 			});
 			
 		};
+		 
+		$scope.fullScreen = function(chartRenderer, parameters) {
+			var modalConfig = {
+				templateUrl: 'chartModal',
+				controller: 'chartModalController',
+				size: 'lg',
+				resolve: {
+					chartRenderer: chartRenderer,
+					parameters: parameters
+				}
+			};
+			var modalInstance = $uibModal.open(modalConfig);
+//			modalInstance.result.then(function(selectedItem) {
+//				debugger;
+//				alert('some stuff before openeing')
+//			}, function(){
+//				console.log('modal closed');
+//			});
+		}
 		
 }]);

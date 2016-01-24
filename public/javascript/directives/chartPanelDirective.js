@@ -1,10 +1,5 @@
 angular.module('vbiApp')
-    .directive('headerDirective', function(){
-    return {
-		 templateUrl: 'views/directiveTemplates/header.html'
-    };
-	
-}).directive('chartPanel', ['plotContinentChart', 'gdpPerCapitaBarChart', 'gdpStackedBarChart', 'plotNorthEast', 'executeQueryService', function(plotContinentChart, gdpPerCapitaBarChart, gdpStackedBarChart, plotNorthEast, executeQueryService){
+    .directive('chartPanel', ['plotContinentChart', 'gdpPerCapitaBarChart', 'gdpStackedBarChart', 'plotNorthEast', 'executeQueryService', function(plotContinentChart, gdpPerCapitaBarChart, gdpStackedBarChart, plotNorthEast, executeQueryService){
 	  return {
 		  
 		  templateUrl: 'views/directiveTemplates/chart.html',
@@ -17,7 +12,7 @@ angular.module('vbiApp')
 		  },
 		  
 		  link: function(scope, elements, attrs) {
-			  console.log(elements[0].childNodes[1]);
+//			  console.log(elements[0].childNodes[1]);
 			  var watchMethod = scope.$watch(function() {
 				  		return elements[0].clientWidth;
 			 		}, function(value){

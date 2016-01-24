@@ -1,4 +1,5 @@
 <header-directive></header-directive>
+<div ng-include="'views/dialogs/chartModal.html'"></div>
 <uib-tabset class="wrap">
     <uib-tab id="{{ tab.tabId }}" heading = "{{ tab.tabTitle }}" ng-repeat= "tab in tabs">
        <div class = "row" ng-repeat = "row in tab.rows">
@@ -13,7 +14,7 @@
 							</div>
 							
 							<chart-panel is-loading="isLoading" parameters = "{{ col.widgetId.parameters }}" chart-renderer-method = "{{ col.widgetId.chartRenderer }}" >
-								<a class="btn pull-right"><img src="/images/fullscreen.png" alt="full screen"></a>
+								<a class="btn pull-right" ng-click="fullScreen(col.widgetId.chartRenderer, col.widgetId.parameters)" data-target="#chartModal"><img src="/images/fullscreen.png" alt="full screen"></a>
 							</chart-panel>
 						</div>
 						<div class="panel-footer">
