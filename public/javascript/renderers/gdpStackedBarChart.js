@@ -12,7 +12,7 @@ angular.module('vbiApp')
 				var containerWidth = chartContainer.clientWidth, 
 					 jsonDataUrl = parameters.url;
 				if(parseInt(containerWidth) === 0)
-					containerWidth = 500;
+					containerWidth = 800;
 //				console.log("gdpStacked", containerWidth);
 				if(parameters.config) {
 					//specific settings if provided for chart

@@ -28,15 +28,14 @@ angular.module('vbiApp')
 		};
 		 
 		$scope.fullScreen = function(chartRenderer, parameters, title) {
-			console.log("full screen ", chartRenderer);
-			console.log("full screen title ", title);
 			var modalConfig = {
 				templateUrl: 'chartModal',
 				controller: 'chartModalController',
 				size: 'lg',
 				resolve: {
-					chartRendererMethod: chartRenderer,
-					parameters: parameters
+					chartRendererMethod: function(){return chartRenderer} ,
+					parameters: function(){ return parameters },
+					title: function(){ return title }
 				}
 			};
 			$uibModal.open(modalConfig);
