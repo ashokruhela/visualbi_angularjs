@@ -33,9 +33,13 @@ angular.module('vbiApp')
 				controller: 'chartModalController',
 				size: 'lg',
 				resolve: {
-					chartRendererMethod: function(){return chartRenderer} ,
-					parameters: function(){ return parameters },
-					title: function(){ return title }
+					chartInfo: function(){
+						return {
+							chartRendererMethod: chartRenderer,
+							parameters: parameters,
+							title: title
+						};
+					}
 				}
 			};
 			$uibModal.open(modalConfig);

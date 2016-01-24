@@ -1,9 +1,6 @@
-angular.module('vbiApp').controller('chartModalController', ['$scope', '$uibModalInstance', 'chartRendererMethod', 'parameters', 'title', function($scope, $uibModalInstance, chartRendererMethod, parameters, title) {
-//	console.log(chartRenderer.render);
-	console.log("chart modal controller ", chartRendererMethod);
-	$scope.chartRendererMethod = chartRendererMethod;
-	$scope.parameters = parameters;
-	$scope.title = title;
+angular.module('vbiApp').controller('chartModalController', ['$scope', '$uibModalInstance', 'chartInfo', function($scope, $uibModalInstance, chartInfo) {
+	console.log($scope.chartInfo);
+	$scope.chartInfo = chartInfo;
 	$scope.hide = function () {
     $uibModalInstance.dismiss('cancel');
   	};
