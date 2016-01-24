@@ -11,14 +11,22 @@ angular.module('vbiApp')
 		  },
 		  
 		  link: function(scope, elements, attrs) {
+//			  console.log(elements);
+			  debugger;
 			  var params;
 			  if(scope.parameters) {
 				  params = JSON.parse(scope.parameters);
 			  }
-			  chartRenderer.plotChart(scope.chartRendererMethod, elements[0].childNodes[1], params)
-					.then(function(data) {
-				  		//any stuff after plotting the chart will go here
-				});
+			  chartRenderer.plotChart(scope.chartRendererMethod, elements[0].childNodes[1], params);
+			  
+//			  var watchMethod = scope.$watch(function() {
+//				  		return elements[0].clientWidth;
+//			 		}, function(value) {
+//				  			if(value > 0 ) {
+//								chartRenderer.plotChart(scope.chartRendererMethod, elements[0].childNodes[1], params)
+//									.then(function(){watchMethod()});
+//							}
+//			  		});
 		  }
 	  };
 }]);

@@ -27,37 +27,19 @@ angular.module('vbiApp')
 			
 		};
 		 
-		$scope.fullScreen = function(chartRenderer, parameters) {
+		$scope.fullScreen = function(chartRenderer, parameters, title) {
+			console.log("full screen ", chartRenderer);
+			console.log("full screen title ", title);
 			var modalConfig = {
 				templateUrl: 'chartModal',
 				controller: 'chartModalController',
 				size: 'lg',
 				resolve: {
-					chartRenderer: chartRenderer,
+					chartRendererMethod: chartRenderer,
 					parameters: parameters
-				},
-				link: function(scope, element, attrs) {
-					console.log(element);
 				}
 			};
-			var modalInstance = $uibModal.open(modalConfig);
-			console.log(modalInstance.opened);
-			modalInstance.rendered.then(function(a, b,c) {
-				var modalElement = angular.element($('#chartModal .modal-body'));
-				console.log("modal renderd",modalElement);
-				modalElement.append('<div>"Hello - set from home"</div>');
-			});
-			modalInstance.opened.then(function(a, b,c) {
-				var modalElement = angular.element($('#chartModal .modal-body'));
-				console.log("modal element",modalElement);
-				modalElement.innerHTML = "Hello - set from home";
-			});
-//			modalInstance.result.then(function(selectedItem) {
-//				debugger;
-//				alert('some stuff before openeing')
-//			}, function(){
-//				console.log('modal closed');
-//			});
+			$uibModal.open(modalConfig);
 		}
 		
 }]);

@@ -11,6 +11,8 @@ angular.module('vbiApp')
 			return new Promise(function(resolve, reject){
 				var containerWidth = chartContainer.clientWidth,
 					 jsonDataUrl = parameters.url;
+				if(parseInt(containerWidth) === 0)
+					containerWidth = 500;
 //				console.log("gdpPerCapita", containerWidth);
 				if(parameters.config) {
 					//specific settings if provided for chart

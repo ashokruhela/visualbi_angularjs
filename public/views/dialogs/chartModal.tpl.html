@@ -1,11 +1,9 @@
 <script type="text/ng-template" id="chartModal">
   <div class="modal-header">
-		<h3 class="modal-title">I'm a modal!</h3>
-		
+		<h3 class="modal-title">{{ title }}</h3>
   </div>
   <div class="modal-body">
-		<p>Modal body goes here</p>
-		{{parameters}}
+		<chart-panel parameters = "{{ parameters }}" chart-renderer-method = "{{ chartRendererMethod }}" ></chart-panel>
   </div>
   <div class="modal-footer">
 		<button class="btn btn-primary" type="button" ng-click="hide()">OK</button>
