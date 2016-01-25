@@ -24,18 +24,6 @@ angular.module('vbiApp')
 						}).then(function(res) {
 						  return (res.data);
 						});
-           },
-			  
-			  getDashboard1: function(userid) {
-				  return new Promise(function(resolve, reject) {
-					  $http({
-					  method: 'GET',
-					  url: '/dashboard/' + userid
-						}).then(function(res) {
-						  resolve(res.data);
-						});
-				  })
-				  
            }
         };
         
