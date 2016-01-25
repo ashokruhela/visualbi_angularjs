@@ -4,7 +4,7 @@ var express = require('express'),
     path = require('path'),
     utils = require('./utils'),
     User = require('../model/user'),
-    passport = require('passport'),
+    passport = require('./passport'),
 	 Credential = require('../model/credential');
 
 // Login page
