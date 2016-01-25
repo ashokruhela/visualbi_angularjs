@@ -11,7 +11,7 @@ angular.module('vbiApp')
 		  },
 		  
 		  link: function(scope, elements, attrs) {
-//			  console.log(elements);
+			  console.log(elements[0].childNodes[1]);
 			  debugger;
 			  var params;
 			  if(scope.parameters) {

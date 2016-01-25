@@ -18,7 +18,9 @@ app.factory('executeQueryService', function($http, $rootScope) {
          console.log(req);
          console.log(container);
          $http(req).then(function(data){
-           var graphArray = renderData (container, data.data);
+            renderData(container, data.data).then(function(data){
+				  var graphArray = data;
+			  });
            if(graphArray !== undefined){
              resolve(graphArray);
            }
@@ -29,13 +31,21 @@ app.factory('executeQueryService', function($http, $rootScope) {
            reject(err);
          });
        });
+    },
+    removeGrid : function (container) {
+      console.log(container);
+      container.children().replaceWith('');
     }
   };
 });
+
 var renderData =  function (container, data){
-//  $('div.section_result').replaceWith('');
-	debugger;
-	container.innerHTML = '<div class="section_result">'+
+	return new Promise (function(resole, reject){
+	console.log('inside render data');
+	console.log(container);
+  // $('div.section_result').replaceWith('');
+	container.innerHTML = "";
+  container.innerHTML = '<div class="section_result">'+
     '<table id="dataTable">'+
       '<tbody id="dataTableBody">'+
         '<script id="axis0_insersion">'+
@@ -44,17 +54,7 @@ var renderData =  function (container, data){
         '</script>'+
       '</tbody>'+
     '</table>'+
-  '</div>'
-//  container.appendChild('<div class="section_result">'+
-//    '<table id="dataTable">'+
-//      '<tbody id="dataTableBody">'+
-//        '<script id="axis0_insersion">'+
-//        '</script>'+
-//        '<script id="axis1_insersion">'+
-//        '</script>'+
-//      '</tbody>'+
-//    '</table>'+
-//  '</div>');
+  '</div>';
   $('#axis0_insersion').append('{{axis0}}');
   $('#axis1_insersion').append('{{axis1}}');
   // $( container+" tr" ).replaceWith( "" );
@@ -107,9 +107,11 @@ var renderData =  function (container, data){
   /***************** Graph Arrays *************/
   var graphKey = [];
   /***************** Axis0 Hierarchical Structure **********/
+
   axis0Child = axis0.reduce((function(acc, member) {
     return addElement(member.Member, acc, 1);
   }), {});
+
   /************* Function for rendering axis0 *****************/
   tdAxis0Child = function(element) {
     var a, ele, name,
@@ -154,6 +156,7 @@ var renderData =  function (container, data){
   var template0 = $.trim($("#axis0_insersion").html()),
       frag0 = template0.replace(/{{axis0}}/ig,tdAxis0Child(axis0Child));
   $('#dataTableBody').append(frag0);  // #dataTableBody
+
   /****************************** Data **********************************/
   var cellData = data.CellData,
       cells = cellData.Cell,
@@ -223,5 +226,6 @@ var renderData =  function (container, data){
   var template1 = $.trim($("#axis1_insersion").html());
   var frag1 = template1.replace(/{{axis1}}/ig,"<tr id='row0' class='dataRow'>"+tdAxis1Child(axis1Child));
   $('#dataTableBody').append(frag1);
-  return graphData;
+  resolve(graphData);
+	});
 }; // end renderData
