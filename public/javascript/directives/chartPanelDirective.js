@@ -11,8 +11,7 @@ angular.module('vbiApp')
 		  },
 		  
 		  link: function(scope, elements, attrs) {
-			  console.log(elements[0].childNodes[1]);
-			  debugger;
+//			  console.log(elements[0].childNodes[1]);
 			  var params;
 			  if(scope.parameters) {
 				  params = JSON.parse(scope.parameters);
